@@ -15,7 +15,7 @@ var messageX = CLOUD_X + OUTER_GAP;
 var messageY = CLOUD_Y + OUTER_GAP;
 var graphAreaX = CLOUD_X + 2 * OUTER_GAP;
 var graphAreaY = CLOUD_Y + OUTER_GAP + 2 * STRING_HEIGHT;
-var barHeight = 150;
+var BAR_HEIGHT = 150;
 var YOU_RECT_COLOR = 'rgba(255, 0, 0, 1)';
 
 var renderCloud = function (ctx, x, y, color) {
@@ -46,11 +46,13 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillText('Ура вы победили!', messageX, messageY);
   ctx.fillText('Список результатов:', messageX, messageY + STRING_HEIGHT);
 
-  function renderGraphElement(playerNumber, rectColor) {
+  var i = 0;
+
+  function renderGraphElement(rectColor) {
     var rectXOffset = i * (BAR_WIDTH + INNER_X_GAP);
     var rectX = graphAreaX + rectXOffset;
-    var rectHeight = barHeight * times[i] / maxTime;
-    var rectHeightDiff = barHeight - rectHeight;
+    var rectHeight = BAR_HEIGHT * times[i] / maxTime;
+    var rectHeightDiff = BAR_HEIGHT - rectHeight;
     var timeY = graphAreaY + rectHeightDiff;
 
     ctx.fillText(Math.round(times[i]), rectX, timeY);
@@ -68,13 +70,11 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  var i = 0;
-
   var otherRectColor;
 
   function handleAndGoNext() {
-    otherRectColor = 'hsl(240, 50, ' + Math.trunc(Math.random() * 100).toString() + ')';
-    renderGraphElement(i, otherRectColor);
+    otherRectColor = 'hsl(240, 50%, ' + Math.trunc(Math.random() * 100).toString() + '%)';
+    renderGraphElement(otherRectColor);
     i++;
   }
 
@@ -83,7 +83,7 @@ window.renderStatistics = function (ctx, players, times) {
   }
 
   if (players[i] === 'Вы') {
-    renderGraphElement(i, YOU_RECT_COLOR);
+    renderGraphElement(YOU_RECT_COLOR);
     i++;
   }
 
