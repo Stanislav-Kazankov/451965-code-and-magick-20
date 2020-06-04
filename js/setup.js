@@ -8,28 +8,13 @@
   var setupPopup = document.querySelector('.setup');
   setupPopup.classList.remove('hidden');
 
-  var wizards = [
-    {
-      name: 'Имя Фамилия',
-      coatColor: 'black',
-      eyesColor: 'green'
-    },
-    {
-      name: 'Имя Фамилия',
-      coatColor: 'black',
-      eyesColor: 'green'
-    },
-    {
-      name: 'Имя Фамилия',
-      coatColor: 'black',
-      eyesColor: 'green'
-    },
-    {
-      name: 'Имя Фамилия',
-      coatColor: 'black',
-      eyesColor: 'green'
-    }
-  ];
+  class Wizard {
+    name;
+    coatColor;
+    eyesColor;
+  }
+
+  var wizards = [];
 
   var generateRandomData = function (wizard) {
     wizard.name = WIZARD_FIRST_NAMES[Math.trunc(Math.random() * 7)] + ' ' + WIZARD_LAST_NAMES[Math.trunc(Math.random() * 7)];
@@ -56,6 +41,8 @@
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < 4; i++) {
+      var wizard = new Wizard();
+      wizards.push(wizard);
       generateRandomData(wizards[i]);
       fragment.appendChild(createWizardElement(wizards[i]));
     }
