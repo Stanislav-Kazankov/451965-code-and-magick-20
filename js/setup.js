@@ -8,12 +8,6 @@
   var setupPopup = document.querySelector('.setup');
   setupPopup.classList.remove('hidden');
 
-  class Wizard {
-    name;
-    coatColor;
-    eyesColor;
-  }
-
   var wizards = [];
 
   var generateRandomData = function (wizard) {
@@ -41,7 +35,12 @@
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < 4; i++) {
-      var wizard = new Wizard();
+      var wizard = {
+        name: '',
+        coatColor: '',
+        eyesColor: ''
+      };
+
       wizards.push(wizard);
       generateRandomData(wizards[i]);
       fragment.appendChild(createWizardElement(wizards[i]));
