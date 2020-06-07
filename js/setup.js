@@ -12,9 +12,9 @@
   var wizards = [];
 
   var generateRandomData = function (wizard) {
-    wizard.name = WIZARD_FIRST_NAMES[Math.round(Math.random() * WIZARD_FIRST_NAMES.length)] + ' ' + WIZARD_LAST_NAMES[Math.round(Math.random() * WIZARD_LAST_NAMES.length)];
-    wizard.coatColor = WIZARD_COAT_COLORS[Math.round(Math.random() * WIZARD_COAT_COLORS.length)];
-    wizard.eyesColor = WIZARD_EYES_COLORS[Math.round(Math.random() * WIZARD_EYES_COLORS.length)];
+    wizard.name = WIZARD_FIRST_NAMES[Math.round(Math.random() * WIZARD_FIRST_NAMES.length - 1)] + ' ' + WIZARD_LAST_NAMES[Math.round(Math.random() * WIZARD_LAST_NAMES.length - 1)];
+    wizard.coatColor = WIZARD_COAT_COLORS[Math.round(Math.random() * WIZARD_COAT_COLORS.length - 1)];
+    wizard.eyesColor = WIZARD_EYES_COLORS[Math.round(Math.random() * WIZARD_EYES_COLORS.length - 1)];
   };
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
